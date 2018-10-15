@@ -24,9 +24,10 @@ public class Tile {
             return type;
         }
         set {
+            TileType oldType = type;
             type = value;
             // Call a callback so we know the type is changed.
-            if (tileTypeChangeCallBack != null) {
+            if (tileTypeChangeCallBack != null && oldType != type) {
                 tileTypeChangeCallBack(this);
             }
         }

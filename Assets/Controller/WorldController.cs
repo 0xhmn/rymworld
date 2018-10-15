@@ -40,17 +40,9 @@ public class WorldController : MonoBehaviour {
         world.RandomizeTile();
     }
 
-    // Randomize the tiles every 2 seconds
-    float randomizeTileTimer = 2f;
-
     // Update is called once per frame
     void Update () {
-		randomizeTileTimer -= Time.deltaTime;
 
-        if (randomizeTileTimer < 0) {
-            world.RandomizeTile();
-            randomizeTileTimer = 2f;
-        }
 	}
 
     // Callback function on TileType change

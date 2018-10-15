@@ -27,6 +27,13 @@ public class WorldController : MonoBehaviour {
 
                 // Add a SpriteRenderer for each tile but don't set the sprite.
                 tile_go.AddComponent<SpriteRenderer>();
+
+                // Register the Tile callback
+                tile_data.RegisterTileTypeChangeCallBack(
+                    (tile) => {
+                        OnTileTypeChanged(tile, tile_go);
+                    }
+                );
             }
         }
 
@@ -47,7 +54,16 @@ public class WorldController : MonoBehaviour {
 	}
 
     // Callback function on TileType change
-    void OnTileTypeChanged(TargetJoint2D tile_data, GameObject tile_go) {
-
+    // Assign the Sprite to a Tile
+    void OnTileTypeChanged(Tile tile_data, GameObject tile_go) {
+        if (tile_data.Type == Tile.TileType.Floor) {
+            tile_go.GetComponent<SpriteRenderer>().sprite = floorSprite;
+        }
+        else if (tile_data.Type == Tile.TileType.Empty) {
+            tile_go.GetComponent<SpriteRenderer>().sprite = null;
+        }
+        else {
+            Debug.LogError("OnTileTypeChanged - Unrecognized tile type!");
+        }
     }
 }

@@ -3,13 +3,14 @@
 public class World {
 
     Tile[,] tiles;
-    int width;
-    int height;
+
+    public int Width { get; }
+    public int Height { get; }
 
     public World(int width = 100, int height = 100)
     {
-        this.width = width;
-        this.height = height;
+        this.Width = width;
+        this.Height = height;
 
         tiles = new Tile[width, height];
 
@@ -22,9 +23,27 @@ public class World {
         }
     }
 
+    public void RandomizeTile()
+    {
+        Debug.Log("[RandomizeTile] - Randomizing the tiles types");
+        for (int x = 0; x < Width; x++)
+        {
+            for (int y = 0; y < Height; y++)
+            {
+                if (Random.Range(0, 2) == 0)
+                {
+                    tiles[x, y].Type = Tile.TileType.Empty;
+                } else
+                {
+                    tiles[x, y].Type = Tile.TileType.Floor;
+                }
+            }
+        }
+    }
+
     public Tile GetTileAt(int x, int y)
     {
-        if ((x > width || x < 0) || (y > height || y < 0))
+        if ((x > Width || x < 0) || (y > Height || y < 0))
         {
             Debug.LogError("Tile is out of range");
             return null;

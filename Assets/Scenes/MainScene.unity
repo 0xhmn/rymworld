@@ -213,6 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 771a374490e12da41b35365263020f3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  floorSprite: {fileID: 21300000, guid: 9f331bf297f6f004399962d44c896ef2, type: 3}
 --- !u!4 &1816752846
 Transform:
   m_ObjectHideFlags: 0

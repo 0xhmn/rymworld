@@ -23,7 +23,8 @@ public class MouseController : MonoBehaviour {
 		circleCursor.transform.position = currFramePosition;
 
 		// Handle Screen Dragging
-		if (Input.GetMouseButton(2) || Input.GetMouseButton(2)) {	// right or middle mouse button
+		if (Input.GetMouseButton(2) || Input.GetMouseButton(1)) {	// right or middle mouse button
+			Debug.Log("Clicked!");
 			Vector3 diff = lastFramePosition - currFramePosition;
 			Camera.main.transform.Translate(diff);
 		}
